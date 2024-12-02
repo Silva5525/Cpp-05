@@ -1,0 +1,9 @@
+.vscode
+*.a
+*.o
+*.d
+*.out
+*.DS_Store
+testfile
+testfile.txt
+testfile.txt.replace
