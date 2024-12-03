@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 22:07:13 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/12/02 21:56:13 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/12/02 21:56:05 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+
+class Form;
 
 /// @brief A Bureaucrat class
 /// New in C++;
@@ -54,6 +56,8 @@ class Bureaucrat
 		void minusGrade();
 	
 		std::string showStr() const;
+
+		void signForm(Form& form) const;
 };
 
 /// @brief Overloads the output stream operator to print the Bureaucrat object.

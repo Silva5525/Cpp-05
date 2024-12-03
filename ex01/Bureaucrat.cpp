@@ -6,11 +6,12 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 22:08:50 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/12/03 12:15:31 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/12/02 21:52:26 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /// @brief Default constructor
 Bureaucrat::Bureaucrat() : name("Bureaucrat"), grade(150) {}
@@ -18,10 +19,6 @@ Bureaucrat::Bureaucrat() : name("Bureaucrat"), grade(150) {}
 /// @brief Constructor with name and grade parameters
 /// @param name of the bureaucrat
 /// @param grade of the bureaucrat
-/// @note New in C++;
-/// @throw is a keywordused to indicate that a exception has occured it terminates the function
-/// and returns the exception to the caller.
-/// here we throw an exception if the grade is too high or too high. < 1 or to low > 150
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade)
 {
 	if (grade < 1)
@@ -96,4 +93,20 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& src)
 {
 	out << src.showStr();
 	return (out);
+}
+
+/// @brief tries to sign a form. If the form is not signed, it throws an exception.
+/// (throws exception if the grade of the bureaucrat is too low)
+/// @param form the form to sign
+void Bureaucrat::signForm(Form& form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << name << " signed " << form.getName() << ".\n";
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << name << " cannot sign " << form.getName() << " because: " << e.what() << "\n";
+	}
 }

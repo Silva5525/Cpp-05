@@ -6,16 +6,15 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 22:08:00 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/12/03 12:28:40 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/12/03 12:30:03 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-/// @brief example main for Bureaucrat class
-/// first increments and prints the grade of a bureaucrat till it reaches the 
-/// highest grade and throws an exception. then decrements it till exception.
-/// then creates a bureaucrat with too high and too low grade to throw exceptions.
+/// @brief example main for Bureaucrat & Form class.
+/// first creates a form with valid grade and tests it.
+/// then creates a form with invalid grade to throw an exception.
 /// @note New in C++:
 /// @throw is a keywordused to indicate that a exception has occured it terminates the function
 /// and returns the exception to the caller.
@@ -23,57 +22,41 @@
 /// IF the code runs without throwing an exception, the try block completes normally.
 /// IF an exception is thrown, the catch block prints the exception message.
 /// @param std::exception& e The exception to catch.
-/// @fn .what() const noexcept override; Returns a C-style character string describing
+/// @fn e.what() const noexcept override; Returns a C-style character string describing
 /// the general cause of the current error.
 int	main(void)
 {
-	std::cout << "==========Create with valid grade & test it==========" << std::endl;
+	std::cout << "==========Create Form with valid grade & test it==========" << std::endl;
 	
 	try
 	{
+		Bureaucrat may("MayNotSign", 42);
 		Bureaucrat bob("Bob", 2);
-		std::cout << bob << std::endl;
-		bob.plusGrade();
-		std::cout << bob << std::endl;
-		bob.plusGrade();
+		Form paper("Paper", 10, 2);
+		
+		std::cout << paper << '\n';
+		
+		std::cout << bob << '\n';
+		bob.signForm(paper);
+		std::cout << paper << '\n';
+		
+		std::cout << may << '\n';
+		may.signForm(paper);
+		std::cout << paper << '\n';
 	}
 	catch (const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	std::cout << "==========Create Form with invalid grade==========" << std::endl;
 	
 	try
 	{
-		Bureaucrat berta("Berta", 149);
-		std::cout << berta << std::endl;
-		berta.minusGrade();
-		std::cout << berta << std::endl;
-		berta.minusGrade();
+		Form badPaper("BadPaper", 0, 15);
+		std::cout << badPaper << "Will not be printet." << std::endl;
 	}	
 	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	std::cout << "==========Create with invalid grade==========" << std::endl;
-
-	try
-	{
-		Bureaucrat tooHigh("TooHighTooPrint", 0);
-		std::cout << tooHigh << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	try
-	{
-		Bureaucrat tooLow("TooLowTooPrint", 151);
-		std::cout << tooLow << std::endl;
-
-	}
-	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
