@@ -6,11 +6,13 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 22:08:00 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/12/03 12:28:40 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:05:20 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+/// @attention From now on i will use -std=c++17 and not -std=c++98.
 
 /// @brief example main for Bureaucrat class
 /// first increments and prints the grade of a bureaucrat till it reaches the 
