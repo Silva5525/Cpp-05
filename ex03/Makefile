@@ -6,11 +6,11 @@
 #    By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/07 18:09:33 by wdegraf           #+#    #+#              #
-#    Updated: 2024/12/05 13:07:55 by wdegraf          ###   ########.fr        #
+#    Updated: 2024/12/05 13:07:40 by wdegraf          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := aform
+NAME := intern
 
 SRC := $(wildcard *.cpp)
 HEADS := $(wildcard *.hpp)
