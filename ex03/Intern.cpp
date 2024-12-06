@@ -6,7 +6,7 @@
 /*   By: wdegraf <wdegraf@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 20:13:37 by wdegraf           #+#    #+#             */
-/*   Updated: 2024/12/05 12:33:33 by wdegraf          ###   ########.fr       */
+/*   Updated: 2024/12/06 14:31:29 by wdegraf          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ const char* Intern::FormNotFoundException::what() const noexcept
 /// @see 2. **Type Aliases with `using`:**
 /// - Instead of using verbose typedefs, the modern `using` keyword provides 
 /// a cleaner syntax for type aliases.
-/// - Here, we define a `using` alias `Forming` for a function pointer type 
+/// - Here, we define a `using`(Keyword) alias `Forming` for a function pointer type 
 /// that returns a pointer to an `AForm` object and takes a `const std::string&`
 /// as an argument.. in my case:
 /// @fn 	using Forming = AForm* (*)(const std::string&);
+/// @------ Check the example below for more information without using.
 /// @see 3. **Structured Data with a Static Array:**
 /// - A `static` array of structs is used to associate form names with their 
 /// respective creation lambdas.
@@ -96,3 +97,28 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& tar) con
 	}
 	throw FormNotFoundException();
 }
+
+// AForm* Intern::makeForm(const std::string& formName, const std::string& tar) const
+// {
+// 	static const struct 
+// 	{
+// 		std::string name;
+// 		AForm* (*drawForm)(const std::string&); //// here the example what using replaces for clearety. (pointer to function)
+// 	}
+// 	forms[] = 
+// 	{
+// 		{"shrubbery creation", [](const std::string& tar) -> AForm* { return (new ShrubberyCreationForm(tar)); }},
+// 		{"robotomy request", [](const std::string& tar) -> AForm* { return (new RobotomyRequestForm(tar)); }},
+// 		{"presidential pardon", [](const std::string& tar) -> AForm* { return (new PresidentialPardonForm(tar)); }}
+// 	};
+	
+// 	for (const auto& form : forms)
+// 	{
+// 		if (form.name == formName)
+// 		{
+// 			std::cout << "Intern Prints " << formName << '\n';
+// 			return (form.drawForm(tar));
+// 		}
+// 	}
+// 	throw FormNotFoundException();
+// }
